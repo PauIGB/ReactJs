@@ -1,1 +1,1 @@
-# ReactJs
+# ReactJs GB course
