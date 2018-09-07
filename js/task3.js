@@ -1,12 +1,15 @@
 class Human {
     constructor(name, age, dob ) {
-
         this.name = name
         this.age = age
         this.dob = dob
     }
     displayInfo() {
-    }    
+        return `name: ${this.name}, age: ${this.age}, date of birth: ${this.dob}`
+    }
+    static getPersonByName (firstName, arrayName) {
+    return arrayName.filter(item => item.name === firstName)[0]
+    }
 }
 
 class Employee extends Human {    
@@ -15,9 +18,9 @@ class Employee extends Human {
         this.salary = salary
         this.dept = dept
     } 
-//    displayInfo() {
-//        
-//    }
+    displayInfo() {
+        return `${super.displayInfo()}, salary: ${this.salary}, dept: ${this.dept}`
+    }
     
 }
 class Manager extends Employee {
@@ -48,9 +51,9 @@ class Developer extends Employee {
     changeManager(firstName) {
         if(this.manager !== firstName) {
             if(this.manager !== undefined) {
-                getPersonByName(this.manager, managers).removeDeveloper(this.name)
+                Human.getPersonByName(this.manager, managers).removeDeveloper(this.name)
             }
-            getPersonByName(firstName, managers).addDeveloper(this.name)
+            Human.getPersonByName(firstName, managers).addDeveloper(this.name)
         }
     }   
 }
@@ -68,22 +71,21 @@ const managers = [
     new Manager('Trent', 53, '17.05.1965', 100000, 'Ex')
 ]
 
-function getPersonByName (firstName, arrayName) {
-    return arrayName.filter(item => item.name === firstName)[0]
-}
-
 // demonstration
 
 //add Developers to managers
-getPersonByName('Tyler', managers).addDeveloper('Brian')
-getPersonByName('Tyler', managers).addDeveloper('Jeordie')
-getPersonByName('Tyler', managers).addDeveloper('Kenneth')
-getPersonByName('Trent', managers).addDeveloper('Timothy')
-getPersonByName('Trent', managers).addDeveloper('Stephen')
+Human.getPersonByName('Tyler', managers).addDeveloper('Brian')
+Human.getPersonByName('Tyler', managers).addDeveloper('Jeordie')
+Human.getPersonByName('Tyler', managers).addDeveloper('Kenneth')
+Human.getPersonByName('Trent', managers).addDeveloper('Timothy')
+Human.getPersonByName('Trent', managers).addDeveloper('Stephen')
 
 //change manager by developer
-getPersonByName('Kenneth', developers)
+Human.getPersonByName('Kenneth', developers).changeManager('Trent')
 
 //result
-console.log(getPersonByName('Tyler', managers))
-console.log(getPersonByName('Trent', managers))
+console.log(Human.getPersonByName('Tyler', managers))
+console.log(Human.getPersonByName('Trent', managers))
+
+//displayInfo
+console.log(Human.getPersonByName('Tyler', managers).displayInfo())
