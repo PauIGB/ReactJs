@@ -86,6 +86,7 @@ Human.getPersonByName('Kenneth', developers).changeManager('Trent')
 //result
 console.log(Human.getPersonByName('Tyler', managers))
 console.log(Human.getPersonByName('Trent', managers))
+console.log(Human.getPersonByName('Brian', developers))
 
 //displayInfo
 console.log(Human.getPersonByName('Tyler', managers).displayInfo())
