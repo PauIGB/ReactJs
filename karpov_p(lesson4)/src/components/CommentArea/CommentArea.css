@@ -1,7 +1,4 @@
-.comment-area {    
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;   
+.comment-area {     
     background-color: rgb(255, 255, 255);
     min-height: 300px;
     border: 1px solid #ccc;

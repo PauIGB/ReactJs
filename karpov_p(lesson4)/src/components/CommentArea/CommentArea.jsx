@@ -12,7 +12,10 @@ class CommentArea extends Component {
         const comAreaStyles = classNames('comment-area');
         return(            
             <div className={comAreaStyles}>
-                <MessageItem message={messages}/>
+                <MessageItem 
+                message={messages} 
+                type='guest'
+                />
             </div>
         )
     }

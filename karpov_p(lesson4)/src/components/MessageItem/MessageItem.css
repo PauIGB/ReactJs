@@ -24,3 +24,17 @@
     background: rgb(105, 152, 238, 0.8);     
     color: snow;
 }
+.message-my::before {
+    right: -10px;
+    border-color: rgb(105, 152, 238, 0.8) transparent transparent rgb(105, 152, 238, 0.8);
+}
+.comm-wrap {
+    display: flex;
+    flex-direction: column;
+}
+.wrap-left {
+    align-items: flex-start;  
+}
+.wrap-right {
+    align-items: flex-end;  
+}
