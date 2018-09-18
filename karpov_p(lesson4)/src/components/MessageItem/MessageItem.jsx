@@ -1,19 +1,21 @@
 import './MessageItem.css';
 
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 
-import classNames from 'classNames';
+import classNames from 'classnames';
 
 class MessageItem extends Component {
     render() {
-        const messageStyles = classNames('message-guest', 'clearfix');
+        const messageStyles = classNames('message', 'message-guest');
+        
+        const messageRend = this.props.message.map((item, idx) => {
+            return (<div className={messageStyles} key={idx}>{item}</div>)
+        });
+
         return(
-            
-            <div>
-                <div className={messageStyles}>What's up man how R U</div>
-                <div className={messageStyles}>YO, MAN WAZUP</div>
-                <div className={messageStyles}>WAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZUP!!!!!</div>
-            </div>
+            <Fragment>
+                {messageRend}
+            </Fragment>            
         )
     }
 }
