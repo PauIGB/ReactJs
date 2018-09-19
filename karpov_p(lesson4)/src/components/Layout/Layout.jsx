@@ -8,8 +8,29 @@ import classNames from 'classnames';
 import CommentArea from 'components/CommentArea';
 import CommentForm from 'components/CommentForm';
 
+const messageText =  [
+    {
+        text:"hi",
+        type: "me"
+    },
+    {
+        text: "What's up man how R U",
+    },
+    {
+        text: "YO, MAN WAZUP",
+    },
+    {
+        text: "WAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZUP!!!!!",
+    },
+];
 
 class Layout extends Component {
+    state = {
+        messages: messageText,
+    }
+
+
+
     render() {
         const wrapperStyles = classNames('wrapper');
         const headingStyles = classNames('main-heading');
@@ -17,8 +38,7 @@ class Layout extends Component {
             <Fragment>
                 <h1 className={headingStyles}>Welcome to chat!</h1>
                 <div className={wrapperStyles}>
-                    <CommentArea>
-                    </CommentArea>
+                    <CommentArea message={this.state.messages} />
                     <CommentForm />                    
                 </div>
             </Fragment>

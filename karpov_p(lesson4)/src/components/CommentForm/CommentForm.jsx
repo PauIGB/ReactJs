@@ -15,23 +15,26 @@ class CommentForm extends Component {
     }
 
     addComment = (event) => { 
-        evt.preventDefault();    
-        const inner = event.target.name === '' ? false : inner;
-        this.setState((prevState) => {
-            return (
-                {
-                    ...prevState,
-                    text: inner,
-                }
-            
-            )
-        });
+        console.log(this.state.text)
+        event.preventDefault();        
     }    
 
     handleChange = (event) => {
         this.setState({
-            [event.target.name]: event.target.value,
+            text: event.target.value,
         })
+        // this.setState.text = event;
+        // /^\s*$/
+        console.log(this.state.text)
+        // const inner = event.target.name === 'aa' ? 'aa' : inner;
+        // this.setState((prevState) => {
+        //     return (
+        //         {
+        //             ...prevState,
+        //             text: inner,
+        //         }            
+        //     )
+        // });
     }
 
     render() {

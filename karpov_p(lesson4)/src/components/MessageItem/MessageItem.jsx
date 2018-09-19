@@ -1,13 +1,21 @@
 import './MessageItem.css';
 
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 class MessageItem extends Component {
+    static propTypes = {
+        type: PropTypes.oneOf(['guest', 'me']),        
+    }
+    static defaultProps = {
+        type: 'guest',
+        text: [],
+    };
+
     render() {
-        // const messageStyles = classNames('message', 'message-guest');
-        const { message, type } = this.props;
+        const { text, type } = this.props;
         const messageStyles = classNames('message', {
             'message-guest': type === 'guest',
             'message-my': type === 'me',
@@ -17,13 +25,12 @@ class MessageItem extends Component {
             'wrap-right': type === 'me',
         });
         
-        const messageRend = this.props.message.map((item, idx) => {
-            return (<div className={messageStyles} key={idx}>{item}</div>)
-        });
-
+        // const messageRend = this.props.message.map((item, idx) => {
+        //     return (<div className={messageStyles} key={idx}>{item}</div>)
+        // });
         return(
             <div className={commentWrapStyles}>
-                {messageRend}
+                <div className={messageStyles}>{this.props.text}</div>            
             </div>            
         )
     }
