@@ -29,7 +29,9 @@ class Layout extends Component {
         messages: messageText,
     }
 
-
+    updateData = (value) => {
+        this.setState({ name: this.state.messages.push(value) })
+      }
 
     render() {
         const wrapperStyles = classNames('wrapper');
@@ -39,7 +41,7 @@ class Layout extends Component {
                 <h1 className={headingStyles}>Welcome to chat!</h1>
                 <div className={wrapperStyles}>
                     <CommentArea message={this.state.messages} />
-                    <CommentForm />                    
+                    <CommentForm updateData={this.updateData} />  
                 </div>
             </Fragment>
         )
