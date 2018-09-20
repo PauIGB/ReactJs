@@ -11,7 +11,7 @@ class CommentForm extends Component {
             text: '',
             type: 'me',
         };   
-        // this.isDisabled = "disabled";
+        this.isDisabled = "disabled";
     }
 
     addComment = (event) => {
@@ -19,14 +19,18 @@ class CommentForm extends Component {
         // // if (textArea.value !== "") {
         // this.state.text = document.querySelector('textarea').value; 
         event.preventDefault();  
-        console.log(this.state);     
+        // const messageRegEx = /^\s*$/;
+        // const testMsg = messageRegEx.test(this.state.text);
+        // if(this.state.text !== "" && !testMsg) {
         
-        this.props.updateData(this.state);      
-        document.querySelector('textarea').value = "";  
-        // }
-        this.setState({
-            text: '',
-        });   
+            this.props.updateData(this.state);      
+            document.querySelector('textarea').value = "";  
+
+            this.setState({
+                text: '',
+            });  
+            this.isDisabled = "disabled";
+        // } 
 
     }    
 
@@ -39,15 +43,12 @@ class CommentForm extends Component {
             text: event.target.value,
         });
      
-        // if (event.target.value === "") {
-        //     this.isDisabled = "disabled";
-            
+        if (event.target.value !== "" ) {
+            this.isDisabled = false;     
    
-        // } else {
-           
-        //     this.isDisabled = false;
-
-        // }
+        } else {           
+            this.isDisabled = "disabled";
+        }
         
      
    
@@ -74,7 +75,7 @@ class CommentForm extends Component {
         return(
             <form action="#" className={formStyles}>
                 <textarea name="textarea" onChange={this.handleChange} className={textareaStyles} placeholder="..." autoFocus></textarea>
-                <input id="click" onClick={this.addComment} className={formbtnStyles} type="submit" minLength="1" required />            
+                <input id="click" onClick={this.addComment} className={formbtnStyles} type="submit" disabled={this.isDisabled} />            
             </form>
         )
     }
