@@ -3,16 +3,13 @@
     flex-direction: column;
     margin: 2rem 0;
 }
-
 .form__text-area, 
 .form__sub-btn {
     border-radius: 5px;
     margin: 0.3rem 0;
     padding: 0.6rem;
 }
-
 .form__sub-btn {
-    cursor: pointer;
     color: white;
     text-transform: uppercase;
     font-weight: bold;
@@ -20,5 +17,16 @@
     background: rgb(105, 152, 238, 0.7);
     border: 1px solid;
 }
+.form__sub-btn--disabled { 
+    background: rgb(105, 152, 238, 0.7); 
+}
+.form__sub-btn--active {
+    cursor: pointer;   
+    background: rgba(45, 112, 236, 0.829); 
+}
+.form__sub-btn--active:hover {
+    background: rgb(39, 113, 252); 
+}
+
 
 

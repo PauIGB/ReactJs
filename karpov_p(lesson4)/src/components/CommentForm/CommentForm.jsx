@@ -15,25 +15,31 @@ class CommentForm extends Component {
     }
 
     addComment = (event) => {     
+        
         this.props.updateData(this.state);      
-        document.querySelector('textarea').value = "";
+        document.querySelector('textarea').value = "";  
+        this.setState({
+            text: '',
+        });   
         event.preventDefault();
     }    
 
     handleChange = (event) => {
-        
-        this.setState({
-            text: event.target.value,
-        });
-        // () => document.getElementById('click').disabled = false;
+        const messageRegEx = /^\s*$/;
+        const testMsg = messageRegEx.test(event.target.value);
+        console.log(testMsg);
+        console.log(event.target.value);
+        debugger
+        if (testMsg === false && event.target.value !== "") {
+            this.setState({
+                text: event.target.value,
+            });
+            this.isDisabled = false;
+        } else {
+            setState(this.isDisabled = "disabled");
+        }
      
-        // document.getElementById('click').removeAttribute('disabled');    
-      
-
-        // this.setState.text = event;
-        // /^\s*$/
-        this.isDisabled = false;
-        console.log(this.state)
+   
         // const inner = event.target.name === 'aa' ? 'aa' : inner;
         // this.setState((prevState) => {
         //     return (
@@ -48,7 +54,10 @@ class CommentForm extends Component {
     render() {
         const formStyles = classNames('form');
         const textareaStyles = classNames('form__text-area');
-        const formbtnStyles = classNames('form__sub-btn');
+        const formbtnStyles = classNames('form__sub-btn', {
+            'form__sub-btn--disabled': this.isDisabled === "disabled",
+            'form__sub-btn--active': this.isDisabled === false,
+        });
         const { text } = this.state;        
 
         return(
