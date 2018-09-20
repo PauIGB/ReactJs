@@ -30,7 +30,7 @@ class Layout extends Component {
     }
 
     updateData = (value) => {
-        this.setState({ name: this.state.messages.push(value) })
+        this.setState({ addValue: this.state.messages.push(value) })
       }
 
     render() {

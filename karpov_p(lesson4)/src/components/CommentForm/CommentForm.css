@@ -7,7 +7,11 @@
 .form__sub-btn {
     border-radius: 5px;
     margin: 0.3rem 0;
+}
+.form__text-area {
     padding: 0.6rem;
+    max-width: 100%;
+    min-height: 80px;
 }
 .form__sub-btn {
     color: white;
@@ -16,6 +20,7 @@
     letter-spacing: 1px;
     background: rgb(105, 152, 238, 0.7);
     border: 1px solid;
+    padding: 1rem;
 }
 .form__sub-btn--disabled { 
     background: rgb(105, 152, 238, 0.7); 
@@ -27,6 +32,3 @@
 .form__sub-btn--active:hover {
     background: rgb(39, 113, 252); 
 }
-
-
-

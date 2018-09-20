@@ -10,34 +10,45 @@ class CommentForm extends Component {
         this.state = {
             text: '',
             type: 'me',
-        };
-        this.isDisabled = "disabled";
+        };   
+        // this.isDisabled = "disabled";
     }
 
-    addComment = (event) => {     
+    addComment = (event) => {
+        // const textArea = document.querySelector('textarea');
+        // // if (textArea.value !== "") {
+        // this.state.text = document.querySelector('textarea').value; 
+        event.preventDefault();  
+        console.log(this.state);     
         
         this.props.updateData(this.state);      
         document.querySelector('textarea').value = "";  
+        // }
         this.setState({
             text: '',
         });   
-        event.preventDefault();
+
     }    
 
     handleChange = (event) => {
-        const messageRegEx = /^\s*$/;
-        const testMsg = messageRegEx.test(event.target.value);
-        console.log(testMsg);
-        console.log(event.target.value);
-        debugger
-        if (testMsg === false && event.target.value !== "") {
-            this.setState({
-                text: event.target.value,
-            });
-            this.isDisabled = false;
-        } else {
-            setState(this.isDisabled = "disabled");
-        }
+        // const messageRegEx = /^\s*$/;
+        // const testMsg = messageRegEx.test(event.target.value);
+        
+        this.setState({
+            
+            text: event.target.value,
+        });
+     
+        // if (event.target.value === "") {
+        //     this.isDisabled = "disabled";
+            
+   
+        // } else {
+           
+        //     this.isDisabled = false;
+
+        // }
+        
      
    
         // const inner = event.target.name === 'aa' ? 'aa' : inner;
@@ -63,7 +74,7 @@ class CommentForm extends Component {
         return(
             <form action="#" className={formStyles}>
                 <textarea name="textarea" onChange={this.handleChange} className={textareaStyles} placeholder="..." autoFocus></textarea>
-                <input id="click" onClick={this.addComment} className={formbtnStyles} type="submit" disabled={this.isDisabled} />            
+                <input id="click" onClick={this.addComment} className={formbtnStyles} type="submit" minLength="1" required />            
             </form>
         )
     }
