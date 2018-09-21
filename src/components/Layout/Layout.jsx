@@ -48,11 +48,13 @@ class Layout extends Component {
         const wrapperStyles = classNames('wrapper');
         const headingStyles = classNames('main-heading');
 
+        const {messages} = this.state;
+
         return(
             <Fragment>
                 <h1 className={headingStyles} >Welcome to chat!</h1>
                 <div className={wrapperStyles}>
-                    <CommentArea message={this.state.messages} />
+                    <CommentArea message={messages} />
                     <CommentForm updateData={this.updateData} />  
                 </div>
             </Fragment>

@@ -18,9 +18,6 @@ class CommentArea extends Component {
         return(            
             <div className={comAreaStyles}>
                 {messageRend} 
-                <div style={{ float:"left", clear: "both" }}
-             ref={(el) => { this.messagesEnd = el; }}>
-        </div>
             </div>
         )
     }

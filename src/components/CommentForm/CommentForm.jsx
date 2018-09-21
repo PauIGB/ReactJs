@@ -12,13 +12,13 @@ class CommentForm extends Component {
             type: 'me',
         };   
         this.isDisabled = "disabled";
-
     }
   
     addComment = (event) => {
         let promise = new Promise((resolve) => {
-            event.preventDefault();        
-            this.props.updateData(this.state);     
+            event.preventDefault(); 
+            const{updateData} = this.props;       
+            updateData(this.state);     
             document.querySelector('textarea').value = "";         
             this.setState({
                 text: '',
@@ -33,24 +33,13 @@ class CommentForm extends Component {
                 top: commArea.scrollHeight,
                 behavior: 'smooth'
             })
-        }
-        )
-        // function func() {
-        //     const commArea = document.querySelector('.comment-area');
-        //     commArea.scrollTo({
-        //         top: commArea.scrollHeight,
-        //         behavior: 'smooth'
-        //     })
-        //     // someElement.scrollTop = someElement.scrollHeight;
-        // }          
-        // setTimeout(func, 100);
-          
-   
+        });   
     }     
 
     handleChange = (event) => {
-        this.setState({            
-            text: event.target.value,
+        this.setState({    
+            //name Должно совпадать с value        
+            [event.target.name]: event.target.value,
         });
         if (event.target.value !== "" ) {
             this.isDisabled = false;     
@@ -60,12 +49,6 @@ class CommentForm extends Component {
         }     
     }
     
-            // someElement.scrollTo({
-        //         top: someElement.scrollHeight,
-        //         behavior: 'smooth'
-        //     })
-
-
     render() {
         const formStyles = classNames('form');
         const textareaStyles = classNames('form__text-area');
@@ -74,9 +57,11 @@ class CommentForm extends Component {
             'form__sub-btn--active': this.isDisabled === false,
         });
 
+        const{text} = this.state;
+
         return(
             <form action="#" className={formStyles}>
-                <textarea name="textarea" onChange={this.handleChange} className={textareaStyles} placeholder="..." autoFocus></textarea>
+                <textarea name="text" onChange={this.handleChange} className={textareaStyles} placeholder="..." value={text} autoFocus></textarea>
                 <input onClick={this.addComment} className={formbtnStyles} type="submit" disabled={this.isDisabled} /> 
                           
             </form>
