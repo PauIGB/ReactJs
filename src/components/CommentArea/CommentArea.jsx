@@ -1,12 +1,12 @@
 import './CommentArea.css';
 
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 
 import classNames from 'classnames';
 
 import MessageItem from 'components/MessageItem';
 
-class CommentArea extends Component {
+class CommentArea extends PureComponent {
     
     render() {
         const comAreaStyles = classNames('comment-area');

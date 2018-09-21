@@ -1,7 +1,7 @@
 import 'normalize.css';
 import './Layout.css';
 
-import React, {Component, Fragment} from 'react';
+import React, {PureComponent, Fragment} from 'react';
 
 import classNames from 'classnames';
 
@@ -24,7 +24,7 @@ const messageText =  [
     },
 ];
 
-class Layout extends Component {
+class Layout extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -39,9 +39,7 @@ class Layout extends Component {
                 ...prevState,
                 messages: prevState.messages.concat([value]),
             }
-        }
-
-        )        
+        })        
     }    
 
     render() {

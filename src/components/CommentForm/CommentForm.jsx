@@ -1,10 +1,10 @@
 import './CommentForm.css';
 
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 
 import classNames from 'classnames';
 
-class CommentForm extends Component {
+class CommentForm extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {

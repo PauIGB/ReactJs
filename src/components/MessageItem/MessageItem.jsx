@@ -1,11 +1,11 @@
 import './MessageItem.css';
 
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-class MessageItem extends Component {
+class MessageItem extends PureComponent {
     static propTypes = {
         type: PropTypes.oneOf(['guest', 'me']),        
     }
@@ -15,7 +15,7 @@ class MessageItem extends Component {
     };   
 
     render() {
-        const { text, type } = this.props;
+        const{text, type} = this.props;
         const messageStyles = classNames('message',  {
             'message-guest': type === 'guest',
             'message-my': type === 'me',
@@ -23,12 +23,11 @@ class MessageItem extends Component {
         const commentWrapStyles = classNames('comm-wrap', {
             'wrap-left': type === 'guest',
             'wrap-right': type === 'me',
-        }); 
-            
+        });             
         
         return(
             <div className={commentWrapStyles}>
-                <div className={messageStyles}>{this.props.text}</div>            
+                <div className={messageStyles}>{text}</div>            
             </div>            
         )
     }
