@@ -31,7 +31,7 @@ class Layout extends PureComponent {
             messages: messageText,
         }
     }
-    
+
     updateData = (value) => {
         // this.setState({ addValue: this.state.messages.push(value) });  
         this.setState((prevState) => {
@@ -45,7 +45,6 @@ class Layout extends PureComponent {
     render() {
         const wrapperStyles = classNames('wrapper');
         const headingStyles = classNames('main-heading');
-
         const {messages} = this.state;
 
         return(

@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import MessageItem from 'components/MessageItem';
 
 class CommentArea extends PureComponent {
+
     
     render() {
         const comAreaStyles = classNames('comment-area');

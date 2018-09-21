@@ -15,7 +15,6 @@ class CommentForm extends PureComponent {
     }
   
     addComment = (event) => {
-        let promise = new Promise((resolve) => {
             event.preventDefault(); 
             const{updateData} = this.props;       
             updateData(this.state);     
@@ -23,17 +22,7 @@ class CommentForm extends PureComponent {
             this.setState({
                 text: '',
             }); 
-            this.isDisabled = "disabled"; 
-            resolve()
-        })      
-       
-        promise.then( () => {
-            const commArea = document.querySelector('.comment-area');
-            commArea.scrollTo({
-                top: commArea.scrollHeight,
-                behavior: 'smooth'
-            })
-        });   
+            this.isDisabled = "disabled";
     }     
 
     handleChange = (event) => {
@@ -48,7 +37,7 @@ class CommentForm extends PureComponent {
             this.isDisabled = "disabled";
         }     
     }
-    
+
     render() {
         const formStyles = classNames('form');
         const textareaStyles = classNames('form__text-area');
