@@ -8,31 +8,31 @@ import classNames from 'classnames';
 import CommentArea from 'components/CommentArea';
 import CommentForm from 'components/CommentForm';
 
-const messageText =  [
-    {
-        text:"hi",
-        type: "me"
-    },
-    {
-        text: "What's up man how R U",
-    },
-    {
-        text: "YO, MAN WAZUP",
-    },
-    {
-        text: "WAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZUP!!!!!",
-    },
-];
+// const messageText =  [
+//     {
+//         text:"hi",
+//         type: "me"
+//     },
+//     {
+//         text: "What's up man how R U",
+//     },
+//     {
+//         text: "YO, MAN WAZUP",
+//     },
+//     {
+//         text: "WAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZUP!!!!!",
+//     },
+// ];
 
 class Layout extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            messages: messageText,
+            messages: [],
         }
     }
     componentDidMount() {     
-        return fetch('http://jsonplaceholder.typicode.com/comments')
+        return fetch('http://localhost:3000/comments')
         .then((response) => response.json())
         .then((comments) => {  
             comments.forEach((item, idx) => setTimeout(() => {
@@ -42,7 +42,7 @@ class Layout extends PureComponent {
                         messages: prevState.messages.concat([{text: item.body}]),
                     }                
                 })
-            }, 10000 * idx))             
+            }, 4000 * idx))             
         })   
     }
 
