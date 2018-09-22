@@ -13,14 +13,15 @@ class MessageItem extends PureComponent {
         type: 'guest',
         text: [],
     };  
-    
+
     componentDidMount() {
         const commArea = document.querySelector('.comment-area');
-            commArea.scrollTo({
-                top: commArea.scrollHeight,
-                behavior: 'smooth'
-            })
+        commArea.scrollTo({
+            top: commArea.scrollHeight,
+            behavior: 'smooth'
+        })
     } 
+    
 
     render() {
         const{text, type} = this.props;

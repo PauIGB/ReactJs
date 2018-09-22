@@ -31,6 +31,20 @@ class Layout extends PureComponent {
             messages: messageText,
         }
     }
+    componentDidMount() {     
+        return fetch('http://jsonplaceholder.typicode.com/comments')
+        .then((response) => response.json())
+        .then((comments) => {  
+            comments.forEach((item, idx) => setTimeout(() => {
+                this.setState((prevState) => {
+                    return {
+                        ...prevState,
+                        messages: prevState.messages.concat([{text: item.body}]),
+                    }                
+                })
+            }, 10000 * idx))             
+        })   
+    }
 
     updateData = (value) => {
         // this.setState({ addValue: this.state.messages.push(value) });  
