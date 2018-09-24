@@ -39,7 +39,11 @@ export default class CommentFormContainer extends PureComponent {
         const{ text } = this.state;
 
         return (  
-            <CommentForm onHandleChange={this.handleChange} onAddComment={this.addComment}  text={ text }/>       
+            <CommentForm 
+            onHandleChange={this.handleChange} 
+            onAddComment={this.addComment} 
+            text={ text } 
+            isDisabled={this.isDisabled} />       
         );
     }
 }

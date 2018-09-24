@@ -2,17 +2,13 @@ import './CommentArea.css';
 
 import React, { PureComponent } from 'react';
 
-import classNames from 'classnames';
-
 class CommentArea extends PureComponent {
 
-    render() {
-        const comAreaStyles = classNames('comment-area');
-        
+    render() {      
         const { messageRend } = this.props;
 
         return(            
-            <div className={ comAreaStyles }>
+            <div className="comment-area">
                 { messageRend } 
             </div>
         )

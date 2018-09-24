@@ -6,19 +6,21 @@ import classNames from 'classnames';
 
 class CommentForm extends PureComponent {
     render() {
+        const { text, onHandleChange, onAddComment, isDisabled } = this.props;
+
         const formStyles = classNames('form');
         const textareaStyles = classNames('form__text-area');
         const formbtnStyles = classNames('form__sub-btn', {
-            'form__sub-btn--disabled': this.isDisabled === "disabled",
-            'form__sub-btn--active': this.isDisabled === false,
+            'form__sub-btn--disabled': isDisabled === "disabled",
+            'form__sub-btn--active': isDisabled === false,
         });
 
-        const { text, onHandleChange, onAddComment } = this.props;
+       
 
         return(
             <form action="#" className={formStyles}>
-                <textarea name="text" onChange={onHandleChange} className={textareaStyles} placeholder="..." value={text} autoFocus></textarea>
-                <input onClick={onAddComment} className={formbtnStyles} type="submit" disabled={this.isDisabled} />                          
+                <textarea name="text" onChange={ onHandleChange } className={ textareaStyles } placeholder="..." value={ text } autoFocus></textarea>
+                <input onClick={ onAddComment } className={ formbtnStyles } type="submit" disabled={ isDisabled } />                          
             </form>
         )
     }

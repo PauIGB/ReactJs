@@ -18,8 +18,8 @@ class MessageItem extends PureComponent {
         });             
         
         return(
-            <div className={commentWrapStyles}>
-                <div className={messageStyles}>{text}</div>            
+            <div className={ commentWrapStyles }>
+                <div className={ messageStyles }>{ text }</div>            
             </div>            
         )
     }
