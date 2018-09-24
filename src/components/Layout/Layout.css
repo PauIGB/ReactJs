@@ -1,3 +1,6 @@
+body {
+    background-image: url('../../img/logo.png');
+}
 *,
 *:after,
 *:before {
@@ -16,10 +19,12 @@ html {
 body {
     color: #333;
     background: rgba(201, 201, 201, 0.3);
+    /* background: url('..img/iPhone.png'); */
     font-weight: 300;
     font-size: 1rem;
     line-height: 1.375;   
     padding: 1rem; 
+    /* background-image: url('../img/logo.png'); */
 }
 .wrapper {    
     margin: 0 auto;

@@ -1,21 +1,35 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlPlugin = require('html-webpack-plugin');
 
-module.exports = {
+const HtmlPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPulugin = require('copy-webpack-plugin');
+
+module.exports = (env, options) => {
+  const development = options.mode === 'development';
+  return {    
   entry: {
     main: path.resolve(__dirname, 'src', 'index.jsx'),
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: development ? 'bundle.js' : 'bundle.min.js',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
       components: path.resolve(__dirname, 'src', 'components'),
-    }
+      containers: path.resolve(__dirname, 'src', 'containers'),
+    },
   },
+  devServer: {
+    contentBase: path.join(__dirname, 'src'),
+    overlay: true,
+    port: 9000,
+    stats: 'errors-only',  
+    compress: true, 
+  },
+  devtool: development ? 'eval-source-map' : false,
   module: {
     rules: [
       { 
@@ -25,20 +39,53 @@ module.exports = {
           loader: 'babel-loader',
         },
       },
-      {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader'],
-        }),
+      { test: /\.(sa|sc|c)ss$/,
+        use: [ 'style-loader', MiniCssExtractPlugin.loader, 'css-loader', 
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',            
+              plugins: (loader) => [                     
+                development ? (require('autoprefixer')(), require('postcss-preset-env'))  : require('cssnano')(), 
+                require('autoprefixer')(),
+                require('postcss-preset-env')                                          
+              ]                                             
+            }
+          }, 'sass-loader']
       },
+      {
+        test: /\.(png|gif|jpe?g)$/,
+        use: [
+            {
+              loader: 'file-loader',
+              options: {
+                  name: 'img/[name].[ext]',
+              },
+            },
+            // 'img-loader',
+          ]
+
+    }
+     
     ]
   },
-  plugins: [
-    new ExtractTextPlugin({ filename: 'bundle.css' }),
+  plugins: [    
     new HtmlPlugin({
       template: path.resolve(__dirname, 'src', 'index.html'),
       filename: 'index.html',
-    })
+    }),
+    new MiniCssExtractPlugin({
+      filename: development ? 'bundle.css' : 'bundle.min.css'
+    }),
+    new CleanWebpackPlugin('dist', {})
+    // new CopyWebpackPulugin([      
+    //   {
+    //     from: './src/img',
+    //     to: './img'
+    //   }
+    
+  // ])
+   
   ]
-}
+  }
+};
