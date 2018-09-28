@@ -1,10 +1,10 @@
 
-import React, { PureComponent } from 'react';
+import React, { Component, PureComponent } from 'react';
 
 import CommentArea from 'components/CommentArea';
 import MessageItem from 'containers/MessageItemContainer';
 
-export default class CommentAreaContainer extends PureComponent {
+export default class CommentAreaContainer extends Component {
 
     render() { 
         const messageRend = this.props.message.map((item, idx) => {

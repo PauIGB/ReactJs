@@ -9,7 +9,7 @@ class CommentArea extends Component {
 
         return(            
             <div className="comment-area">
-                { messageRend } 
+                {messageRend} 
             </div>
         )
     }

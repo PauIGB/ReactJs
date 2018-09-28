@@ -1,14 +1,14 @@
-import React, { Component, PureComponent } from 'react';
+import React, { Component, PureComponent, Fragment } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 
 import Layout from 'containers/LayoutContainer';
 
+
 class App extends Component {
-    
     render() {
         return(
-           <Layout />
+            <Layout />             
         )
     }
 }

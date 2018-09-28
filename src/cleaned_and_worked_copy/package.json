@@ -10,7 +10,8 @@
     "build": "webpack --mode production",
     "json-server": "json-server --watch db.json --port 3001",
     "dev:cComp": "node cli/component.js --n",
-    "dev:cCont": "node cli/container.js --n"
+    "dev:cCont": "node cli/container.js --n",
+    "dev:cc": "node cli/component-conatiner.js --n"
   },
   "keywords": [],
   "author": "",

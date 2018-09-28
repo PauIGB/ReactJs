@@ -1,0 +1,70 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "name": "Brian",
+      "author": "Паша"
+    },
+    {
+      "id": 2,
+      "name": "Johny",
+      "author": "Паша"
+    }
+  ],
+  "comments": [
+    {
+      "body": "Brian comment -1",
+      "postId": 1,
+      "id": 1
+    },
+    {
+      "body": "Brian comment -2",
+      "postId": 1,
+      "id": 2
+    },
+    {
+      "body": "Hello!",
+      "type": "me",
+      "postId": "1",
+      "id": 5
+    },
+    {
+      "body": "Привет!",
+      "type": "me",
+      "postId": "1",
+      "id": 6
+    },
+    {
+      "body": "Как дила",
+      "type": "me",
+      "postId": "1",
+      "id": 7
+    },
+    {
+      "body": "Как дила post2",
+      "type": "me",
+      "postId": "2",
+      "id": 8
+    },
+    {
+      "body": "Как дила post2",
+      "postId": "2",
+      "id": 9
+    },
+    {
+      "body": "Привет, Брайан",
+      "type": "me",
+      "postId": "1",
+      "id": 10
+    },
+    {
+      "body": "afdas",
+      "type": "me",
+      "postId": "2",
+      "id": 11
+    }
+  ],
+  "profile": {
+    "name": "asfd"
+  }
+}

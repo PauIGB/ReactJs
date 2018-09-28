@@ -1,26 +1,31 @@
-import React, { PureComponent } from 'react';
+import React, { Component, PureComponent } from 'react';
+import { Link } from 'react-router-dom';
 
 import Layout from 'components/Layout';
 
-export default class LayoutContainer extends PureComponent {
+export default class LayoutContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
             messages: [],
         }
     }
-    componentDidMount() {     
-        return fetch('http://localhost:3000/comments')
+    componentDidMount() { 
+       
+        return fetch('http://localhost:3001/comments/2')
+        //   return fetch(`http://localhost:3001/${match.params.id}`)
         .then((response) => response.json())
         .then((comments) => {  
-            comments.forEach((item, idx) => setTimeout(() => {
+            comments.body.forEach((item, idx) => 
+            // setTimeout(() => {
                 this.setState((prevState) => {
                     return {
                         ...prevState,
-                        messages: prevState.messages.concat([{text: item.body}]),
+                        messages: prevState.messages.concat([{text: item.text}]),
                     }                
                 })
-            }, 4000 * idx))             
+            // }, 4000 * idx)
+            );             
         })   
     }
 
@@ -36,7 +41,9 @@ export default class LayoutContainer extends PureComponent {
         const { messages } = this.state;
 
         return (  
-            <Layout messages={messages} updateData={this.updateData}/>     
+            <div>
+                <Layout messages={messages} updateData={this.updateData}/>  
+            </div>
         );
     }
 }

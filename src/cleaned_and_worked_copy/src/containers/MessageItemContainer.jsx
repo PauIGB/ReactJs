@@ -23,10 +23,10 @@ export default class MessageItemContainer extends Component {
     } 
 
     render() { 
-        const { text, type } = this.props;   
-           
+        const { text, type } = this.props;          
         return (  
-            <MessageItem text={ text } type={ type }/>       
+            <MessageItem text={text} type={type}/>       
         );
     }
 }
+

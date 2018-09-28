@@ -1,8 +1,8 @@
-import React, { PureComponent } from 'react';
+import React, { Component, PureComponent } from 'react';
 
 import CommentForm from 'components/CommentForm';
 
-export default class CommentFormContainer extends PureComponent {
+export default class CommentFormContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -42,7 +42,7 @@ export default class CommentFormContainer extends PureComponent {
             <CommentForm 
             onHandleChange={this.handleChange} 
             onAddComment={this.addComment} 
-            text={ text } 
+            text={text} 
             isDisabled={this.isDisabled} />       
         );
     }

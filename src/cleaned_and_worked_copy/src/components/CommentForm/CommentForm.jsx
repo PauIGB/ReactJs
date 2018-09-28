@@ -13,9 +13,7 @@ class CommentForm extends Component {
         const formbtnStyles = classNames('form__sub-btn', {
             'form__sub-btn--disabled': isDisabled === "disabled",
             'form__sub-btn--active': isDisabled === false,
-        });
-
-       
+        });       
 
         return(
             <form action="#" className={formStyles}>
